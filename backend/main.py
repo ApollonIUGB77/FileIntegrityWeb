@@ -1,3 +1,4 @@
+# © 2026 Aboubacar Sidick Meite (ApollonIUGB77) — All Rights Reserved
 """FileIntegrity API — FastAPI backend."""
 
 import hashlib
