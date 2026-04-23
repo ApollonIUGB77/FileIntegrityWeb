@@ -1,6 +1,6 @@
-﻿# ðŸ›¡ï¸ FileIntegrityWeb
+# ðŸ›¡ï¸ FileIntegrityWeb
 
-> Cryptographic file hashing & integrity verification â€” built with FastAPI and a React cyberpunk UI.
+> Cryptographic file hashing & integrity verification — built with FastAPI and a React cyberpunk UI.
 
 ![Python](https://img.shields.io/badge/Python-3.11+-blue?logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688?logo=fastapi)
@@ -14,7 +14,7 @@
 ## What is FileIntegrityWeb?
 
 FileIntegrityWeb is a full-stack web application that lets you **hash any file with a cryptographic algorithm** and later **verify that the file hasn't been tampered with**.  
-Every hash is protected by an HMAC signature â€” ensuring both integrity and authenticity.
+Every hash is protected by an HMAC signature — ensuring both integrity and authenticity.
 
 ---
 
@@ -22,7 +22,7 @@ Every hash is protected by an HMAC signature â€” ensuring both integrity an
 
 | Feature | Details |
 |---|---|
-| ðŸ”¢ Multi-Algorithm Hashing | SHA-256, SHA-512, SHA-1, MD5 â€” your choice |
+| ðŸ”¢ Multi-Algorithm Hashing | SHA-256, SHA-512, SHA-1, MD5 — your choice |
 | ðŸ” HMAC Protection | HMAC-SHA256 signature on every stored hash |
 | âœ… Integrity Verification | Re-upload any file to instantly check if it changed |
 | ðŸ“‹ Hash History | Browse all stored records with full hash & HMAC values |
@@ -35,17 +35,17 @@ Every hash is protected by an HMAC signature â€” ensuring both integrity an
 ## Security Model
 
 ```
-File â”€â”€â–º hashlib (SHA-256 / SHA-512 / SHA-1 / MD5) â”€â”€â–º hash_value
-  â”‚
-  â””â”€â”€â–º HMAC-SHA256 (server secret key) â”€â”€â–º hmac_value
-                                               â”‚
+File ──â–º hashlib (SHA-256 / SHA-512 / SHA-1 / MD5) ──â–º hash_value
+  │
+  └──â–º HMAC-SHA256 (server secret key) ──â–º hmac_value
+                                               │
                               stored together in hash_storage/
 ```
 
-- **HMAC protects against hash file tampering** â€” even if the `.hash` file is modified, HMAC verification will fail
+- **HMAC protects against hash file tampering** — even if the `.hash` file is modified, HMAC verification will fail
 - **Secret key** loaded from `HMAC_SECRET` env variable (random on each restart if not set)
-- **Constant-time comparison** via `hmac.compare_digest` â€” no timing attacks
-- **Filename sanitization** â€” `Path(filename).name` strips any path traversal
+- **Constant-time comparison** via `hmac.compare_digest` — no timing attacks
+- **Filename sanitization** — `Path(filename).name` strips any path traversal
 
 ---
 
@@ -75,7 +75,7 @@ npm run dev
 # App running at http://localhost:5173
 ```
 
-> The Vite dev server proxies `/api/*` â†’ `http://localhost:8000` automatically.
+> The Vite dev server proxies `/api/*` ↑ `http://localhost:8000` automatically.
 
 ---
 
@@ -83,25 +83,25 @@ npm run dev
 
 ```
 FileIntegrityWeb/
-â”œâ”€â”€ backend/
-â”‚   â”œâ”€â”€ main.py              # FastAPI app â€” all routes & crypto logic
-â”‚   â”œâ”€â”€ requirements.txt
-â”‚   â”œâ”€â”€ .env.example         # HMAC_SECRET env variable template
-â”‚   â”œâ”€â”€ uploads/             # Uploaded files (gitignored)
-â”‚   â””â”€â”€ hash_storage/        # Stored .hash files (gitignored)
-â”‚
-â””â”€â”€ frontend/
-    â”œâ”€â”€ src/
-    â”‚   â”œâ”€â”€ App.tsx                    # Main shell â€” tab navigation
-    â”‚   â”œâ”€â”€ components/
-    â”‚   â”‚   â”œâ”€â”€ UploadTab.tsx          # Upload & hash a file
-    â”‚   â”‚   â”œâ”€â”€ VerifyTab.tsx          # Verify file integrity
-    â”‚   â”‚   â”œâ”€â”€ HistoryTab.tsx         # Browse stored records
-    â”‚   â”‚   â”œâ”€â”€ AlgoSelector.tsx       # Algorithm picker
-    â”‚   â”‚   â””â”€â”€ DropZone.tsx           # Drag & drop file input
-    â”‚   â””â”€â”€ index.css                  # Global styles + cyberpunk theme
-    â”œâ”€â”€ tailwind.config.js
-    â””â”€â”€ vite.config.ts
+├── backend/
+│   ├── main.py              # FastAPI app — all routes & crypto logic
+│   ├── requirements.txt
+│   ├── .env.example         # HMAC_SECRET env variable template
+│   ├── uploads/             # Uploaded files (gitignored)
+│   └── hash_storage/        # Stored .hash files (gitignored)
+│
+└── frontend/
+    ├── src/
+    │   ├── App.tsx                    # Main shell — tab navigation
+    │   ├── components/
+    │   │   ├── UploadTab.tsx          # Upload & hash a file
+    │   │   ├── VerifyTab.tsx          # Verify file integrity
+    │   │   ├── HistoryTab.tsx         # Browse stored records
+    │   │   ├── AlgoSelector.tsx       # Algorithm picker
+    │   │   └── DropZone.tsx           # Drag & drop file input
+    │   └── index.css                  # Global styles + cyberpunk theme
+    ├── tailwind.config.js
+    └── vite.config.ts
 ```
 
 ---
@@ -112,7 +112,7 @@ FileIntegrityWeb/
 |---|---|---|
 | `GET` | `/` | Health check |
 | `GET` | `/algorithms` | List available algorithms |
-| `POST` | `/upload` | Upload file â†’ returns hash + HMAC |
+| `POST` | `/upload` | Upload file ↑ returns hash + HMAC |
 | `POST` | `/verify` | Verify file against stored hash |
 | `GET` | `/files` | List all stored records |
 | `GET` | `/download/{filename}/{algo}` | Download a `.hash` file |
@@ -123,34 +123,34 @@ FileIntegrityWeb/
 
 ## Usage
 
-1. **Upload** â€” drop a file, pick an algorithm, click *Upload & Hash*
-2. **Store** â€” copy the hash or download the `.hash` file for reference
-3. **Verify** â€” later, drop the same file in the *Verify* tab
-4. **Result** â€” instant verdict: âœ… *INTEGRITY VERIFIED* or âŒ *INTEGRITY FAILURE*
-5. **History** â€” manage all your records from the *History* tab
+1. **Upload** — drop a file, pick an algorithm, click *Upload & Hash*
+2. **Store** — copy the hash or download the `.hash` file for reference
+3. **Verify** — later, drop the same file in the *Verify* tab
+4. **Result** — instant verdict: âœ… *INTEGRITY VERIFIED* or âŒ *INTEGRITY FAILURE*
+5. **History** — manage all your records from the *History* tab
 
 ---
 
 ## Tech Stack
 
-- **Backend** â€” FastAPI, Python 3.11, Uvicorn
-- **Hashing** â€” hashlib (SHA-256, SHA-512, SHA-1, MD5)
-- **HMAC** â€” Python `hmac` module (HMAC-SHA256)
-- **Frontend** â€” React 18, TypeScript, Vite
-- **Styling** â€” Tailwind CSS (custom cyberpunk palette)
-- **HTTP Client** â€” Axios
+- **Backend** — FastAPI, Python 3.11, Uvicorn
+- **Hashing** — hashlib (SHA-256, SHA-512, SHA-1, MD5)
+- **HMAC** — Python `hmac` module (HMAC-SHA256)
+- **Frontend** — React 18, TypeScript, Vite
+- **Styling** — Tailwind CSS (custom cyberpunk palette)
+- **HTTP Client** — Axios
 
 ---
 
 ## Author
 
-**Aboubacar Sidick Meite** â€” Cybersecurity Student  
+**Aboubacar Sidick Meite** — Cybersecurity Student  
 [GitHub](https://github.com/ApollonASM8977)
 
 ---
 
 ## License
 
-Â© 2026 Aboubacar Sidick Meite â€” All Rights Reserved.  
+© 2026 Aboubacar Sidick Meite — All Rights Reserved.  
 Unauthorized copying, distribution or modification is strictly prohibited.
 

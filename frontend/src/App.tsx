@@ -1,4 +1,4 @@
-﻿// Â© 2026 Aboubacar Sidick Meite (ApollonASM8977) â€” All Rights Reserved
+// © 2026 Aboubacar Sidick Meite (ApollonASM8977) — All Rights Reserved
 import { useState } from 'react'
 import { Shield, Upload, ShieldCheck, History } from 'lucide-react'
 import UploadTab from './components/UploadTab'
@@ -90,7 +90,7 @@ export default function App() {
           <p className="text-center text-cyber-muted/30 text-xs mt-6 font-mono tracking-widest">
             v2.0.0 Â· FastAPI + React Â· All operations local
           </p>
-          <p className="text-right text-cyber-muted/20 text-xs mt-1 font-mono pr-1">Â© ASM</p>
+          <p className="text-right text-cyber-muted/20 text-xs mt-1 font-mono pr-1">© ASM</p>
         </main>
       </div>
     </div>
