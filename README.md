@@ -1,4 +1,4 @@
-# ðŸ›¡ï¸ FileIntegrityWeb
+# 🛡️ FileIntegrityWeb
 
 > Cryptographic file hashing & integrity verification — built with FastAPI and a React cyberpunk UI.
 
@@ -22,22 +22,22 @@ Every hash is protected by an HMAC signature — ensuring both integrity and aut
 
 | Feature | Details |
 |---|---|
-| ðŸ”¢ Multi-Algorithm Hashing | SHA-256, SHA-512, SHA-1, MD5 — your choice |
-| ðŸ” HMAC Protection | HMAC-SHA256 signature on every stored hash |
-| âœ… Integrity Verification | Re-upload any file to instantly check if it changed |
-| ðŸ“‹ Hash History | Browse all stored records with full hash & HMAC values |
-| â¬‡ï¸ Hash Download | Export any `.hash` file for offline archiving |
-| ðŸ—‘ï¸ Record Management | Delete individual entries or clear all at once |
-| ðŸŽ¨ Cyberpunk UI | Dark terminal-style interface with glowing green accents |
+| 🔢 Multi-Algorithm Hashing | SHA-256, SHA-512, SHA-1, MD5 — your choice |
+| 🔐 HMAC Protection | HMAC-SHA256 signature on every stored hash |
+| ✅ Integrity Verification | Re-upload any file to instantly check if it changed |
+| 📋 Hash History | Browse all stored records with full hash & HMAC values |
+| ⬇️ Hash Download | Export any `.hash` file for offline archiving |
+| 🗑️ Record Management | Delete individual entries or clear all at once |
+| 🎨 Cyberpunk UI | Dark terminal-style interface with glowing green accents |
 
 ---
 
 ## Security Model
 
 ```
-File ──â–º hashlib (SHA-256 / SHA-512 / SHA-1 / MD5) ──â–º hash_value
+File ──► hashlib (SHA-256 / SHA-512 / SHA-1 / MD5) ──► hash_value
   │
-  └──â–º HMAC-SHA256 (server secret key) ──â–º hmac_value
+  └──► HMAC-SHA256 (server secret key) ──► hmac_value
                                                │
                               stored together in hash_storage/
 ```
@@ -126,7 +126,7 @@ FileIntegrityWeb/
 1. **Upload** — drop a file, pick an algorithm, click *Upload & Hash*
 2. **Store** — copy the hash or download the `.hash` file for reference
 3. **Verify** — later, drop the same file in the *Verify* tab
-4. **Result** — instant verdict: âœ… *INTEGRITY VERIFIED* or âŒ *INTEGRITY FAILURE*
+4. **Result** — instant verdict: ✅ *INTEGRITY VERIFIED* or ❌ *INTEGRITY FAILURE*
 5. **History** — manage all your records from the *History* tab
 
 ---
